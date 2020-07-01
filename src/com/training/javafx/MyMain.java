@@ -6,16 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class MyMain extends Application {
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws Exception {
 		launch(args);
 	}
 
@@ -23,7 +21,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader loader = new
 				FXMLLoader(getClass().getResource("app_layout.fxml"));
-		Pane rootNode = loader.load();
+		VBox rootNode = loader.load();
 
 		MenuBar menuBar = createMenu();
 		rootNode.getChildren().addAll(menuBar);
@@ -34,6 +32,7 @@ public class Main extends Application {
 		primaryStage.setTitle("Hello World");
 		primaryStage.show();
 	}
+
 
 	private MenuBar createMenu() {
 		//File menu
@@ -71,7 +70,12 @@ public class Main extends Application {
 	}
 
 	private void aboutApp() {
-		//TODO
+		Alert alertDialog = new Alert(Alert.AlertType.INFORMATION);
+		alertDialog.setTitle("My first Java Desktop App");
+		alertDialog.setHeaderText("Learning JavaFX");
+		alertDialog.setContentText("I am just a beginner in JavaFX!");
+		alertDialog.show();
 	}
+
 
 }
