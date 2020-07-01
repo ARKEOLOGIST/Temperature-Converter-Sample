@@ -28,7 +28,7 @@ public class MyMain extends Application {
 		MenuBar menuBar = createMenu();
 		rootNode.getChildren().add(0,menuBar);
 
-		Scene scene = new Scene(rootNode, 300, 275);
+		Scene scene = new Scene(rootNode);
 
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Hello World");
