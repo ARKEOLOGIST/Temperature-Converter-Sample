@@ -11,6 +11,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.Optional;
+
 public class MyMain extends Application {
 
 	public static void main(String args[]) throws Exception {
@@ -24,7 +26,7 @@ public class MyMain extends Application {
 		VBox rootNode = loader.load();
 
 		MenuBar menuBar = createMenu();
-		rootNode.getChildren().addAll(menuBar);
+		rootNode.getChildren().add(0,menuBar);
 
 		Scene scene = new Scene(rootNode, 300, 275);
 
@@ -74,7 +76,23 @@ public class MyMain extends Application {
 		alertDialog.setTitle("My first Java Desktop App");
 		alertDialog.setHeaderText("Learning JavaFX");
 		alertDialog.setContentText("I am just a beginner in JavaFX!");
-		alertDialog.show();
+
+		ButtonType yesBtn = new ButtonType("Yes");
+		ButtonType noBtn = new ButtonType("No");
+
+		alertDialog.getButtonTypes().setAll(yesBtn,noBtn);
+		Optional<ButtonType> clickedBtn = alertDialog.showAndWait();
+
+		if (clickedBtn.isPresent() && clickedBtn.get() == yesBtn)
+		{
+			//TODO
+		}
+		else
+		{
+			//TODO
+		}
+
+		//alertDialog.show();
 	}
 
 
