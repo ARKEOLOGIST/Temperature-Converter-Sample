@@ -31,7 +31,7 @@ public class MyMain extends Application {
 		Scene scene = new Scene(rootNode);
 
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Hello World");
+		primaryStage.setTitle("Temperature Converter Tool");
 		primaryStage.show();
 	}
 
@@ -39,8 +39,10 @@ public class MyMain extends Application {
 	private MenuBar createMenu() {
 		//File menu
 		Menu fileMenu = new Menu("File");
+		//New menu item
 		MenuItem newMenuItem = new MenuItem("New");
 		SeparatorMenuItem separatorMenuItem = new SeparatorMenuItem();
+		//Quit menu item
 		MenuItem quitMenuItem = new MenuItem("Quit");
 
 		quitMenuItem.setOnAction(new EventHandler<ActionEvent>() {
@@ -54,6 +56,7 @@ public class MyMain extends Application {
 
 		//Help menu
 		Menu helpMenu = new Menu("Help");
+		//About menu item
 		MenuItem aboutApp = new MenuItem("About");
 
 		aboutApp.setOnAction(new EventHandler<ActionEvent>() {
