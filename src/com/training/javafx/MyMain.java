@@ -15,6 +15,8 @@ import java.util.Optional;
 
 public class MyMain extends Application {
 
+	private Controller controller;
+
 	public static void main(String args[]) throws Exception {
 		launch(args);
 	}
@@ -24,6 +26,8 @@ public class MyMain extends Application {
 		FXMLLoader loader = new
 				FXMLLoader(getClass().getResource("app_layout.fxml"));
 		VBox rootNode = loader.load();
+
+		controller = loader.getController();
 
 		MenuBar menuBar = createMenu();
 		rootNode.getChildren().add(0,menuBar);
@@ -41,6 +45,13 @@ public class MyMain extends Application {
 		Menu fileMenu = new Menu("File");
 		//New menu item
 		MenuItem newMenuItem = new MenuItem("New");
+
+		newMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent actionEvent) {
+				controller.userInputField.setText("");
+			}
+		});
 		SeparatorMenuItem separatorMenuItem = new SeparatorMenuItem();
 		//Quit menu item
 		MenuItem quitMenuItem = new MenuItem("Quit");
@@ -79,23 +90,7 @@ public class MyMain extends Application {
 		alertDialog.setTitle("My first Java Desktop App");
 		alertDialog.setHeaderText("Learning JavaFX");
 		alertDialog.setContentText("I am just a beginner in JavaFX!");
-
-		ButtonType yesBtn = new ButtonType("Yes");
-		ButtonType noBtn = new ButtonType("No");
-
-		alertDialog.getButtonTypes().setAll(yesBtn,noBtn);
-		Optional<ButtonType> clickedBtn = alertDialog.showAndWait();
-
-		if (clickedBtn.isPresent() && clickedBtn.get() == yesBtn)
-		{
-			//TODO
-		}
-		else
-		{
-			//TODO
-		}
-
-		//alertDialog.show();
+		alertDialog.show();
 	}
 
 
